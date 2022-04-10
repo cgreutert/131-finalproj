@@ -1,21 +1,24 @@
 ---
 title: "Final Project Data Memo"
 author: "Carly Greutert"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-wine <- read_csv('C:\\Users\\carly\\AppData\\Local\\Temp\\Temp1_archive.zip\\WineQT.csv')
+```{r}
+library(readxl)
+library(tidyverse)
+wine <- read_csv('C:\\Program Files\\Git\\tmp\\131-finalproj\\WineQT.csv')
+head(wine)
+nrow(wine)
+is.null(wine)
+```
 
-An overview of your dataset
-What does it include?
-Where and how will you be obtaining it? Include the link and source.
-About how many observations? How many predictors?
-What types of variables will you be working with?
-Is there any missing data? About how much? Do you have an idea for how to handle it?
+An Overview of my Dataset                                                                     
+The dataset I chose from Kaggle & UCI Machine Learning Repository (https://www.kaggle.com/datasets/yasserh/wine-quality-dataset) predicts the wine quality of the red variants of the Portuguese "Vinho Verde" wine. This dataset has 11 predictors (fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol) based on physicochemical tests to give a quality score between 0 and 10. Note there is an 'id' variable that simply counts how many observations there are but is not used in prediction. There are 1,142 observations/wines that we draw from for our predictions. The predictor variables are all numeric and can take any real, positive value. Quality, our response variable, is a whole integer between 0 and 10. My initial observation is that there are no missing values in my dataset, however, if a missing value is discovered, I will likely omit that observation since there is likely to be few and should not have a significant impact on predicting quality.  
 
 - An overview of your research question(s)
 What variable(s) are you interested in predicting? What question(s) are you interested in answering?
