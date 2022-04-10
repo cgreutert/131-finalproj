@@ -18,19 +18,27 @@ is.null(wine)
 ```
 
 An Overview of my Dataset                                                                     
-The dataset I chose from Kaggle & UCI Machine Learning Repository (https://www.kaggle.com/datasets/yasserh/wine-quality-dataset) predicts the wine quality of the red variants of the Portuguese "Vinho Verde" wine. This dataset has 11 predictors (fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol) based on physicochemical tests to give a quality score between 0 and 10. Note there is an 'id' variable that simply counts how many observations there are but is not used in prediction. There are 1,142 observations/wines that we draw from for our predictions. The predictor variables are all numeric and can take any real, positive value. Quality, our response variable, is a whole integer between 0 and 10. My initial observation is that there are no missing values in my dataset, however, if a missing value is discovered, I will likely omit that observation since there is likely to be few and should not have a significant impact on predicting quality.  
+The dataset I chose from Kaggle & UCI Machine Learning Repository (https://www.kaggle.com/datasets/yasserh/wine-quality-dataset) predicts the wine quality of the red variants of the Portuguese "Vinho Verde" wine. This dataset has 11 predictors (fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol) based on physicochemical tests to give a quality score between 0 and 10. Note there is an 'id' variable that simply counts how many observations there are but is not used in prediction. There are 1,142 observations/wines that we draw from for our predictions. The predictor variables are all numeric and can take any real, positive value. Quality, our response variable, is a whole integer between 0 and 10. My initial observation is that there are no missing values in my dataset, however, if a missing value is discovered, I will likely omit that observation since there is likely to be few and should not have a significant impact on predicting quality.                                                
+An Overview of my Research Questions                                                            
+I am interested in predicting the wine quality score. Some preliminary research questions I am interested in answering:                                                                       Which predictors are useful in predicting quality? Which set of predictors produce the most accurate results? Do all our predictors explain the quality score?                              
+These questions can be answered with a classification or regression approach; however, I anticipate using a regression approach.
+```{r}
+wine %>% ggplot(aes(x = `fixed acidity`))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = `volatile acidity`))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = `citric acid`))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = `residual sugar`))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = chlorides))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = `free sulfur dioxide`))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = `total sulfur dioxide`))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = density))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = pH))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = sulphates))+ geom_histogram(bins = 80)
+wine %>% ggplot(aes(x = alcohol))+ geom_histogram(bins = 80)
+```
 
-- An overview of your research question(s)
-What variable(s) are you interested in predicting? What question(s) are you interested in answering?
-Name your response/outcome variable(s) and briefly describe it/them.
-Will these questions be best answered with a classification or regression approach?
-Which predictors do you think will be especially useful?
-Is the goal of your model descriptive, predictive, inferential, or a combination? Explain.
-
-- Your proposed project timeline
-When do you plan on having your data set loaded, beginning your exploratory data analysis, etc?
-Provide a general timeline for the rest of the quarter.
-
-- Any questions or concerns
-Are there any problems or difficult aspects of the project you anticipate?
-Any specific questions you have for me/the instructional team?
+I think fixed acidity and total sulfur dioxide will be especially useful since there is more of a spread of values. The goal of my model is a combination of descriptive and predictive because I want to be able to explain why certain variables impact quality differently.                  
+My Proposed Project Timeline
+Weeks 1-2: Finding and Uploading Data Set                                                       
+Weeks 3-4: Tidy Data and Exploratory Data Analysis                                              
+Weeks 5-8: Write descriptive analyses and create/run models                                     
+Weeks 9-10: Compile and Edit into final draft

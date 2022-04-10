@@ -76,20 +76,86 @@ variable, is a whole integer between 0 and 10. My initial observation is
 that there are no missing values in my dataset, however, if a missing
 value is discovered, I will likely omit that observation since there is
 likely to be few and should not have a significant impact on predicting
-quality.
+quality.  
+An Overview of my Research Questions  
+I am interested in predicting the wine quality score. Some preliminary
+research questions I am interested in answering: Which predictors are
+useful in predicting quality? Which set of predictors produce the most
+accurate results? Do all our predictors explain the quality score?  
+These questions can be answered with a classification or regression
+approach; however, I anticipate using a regression approach.
 
--   An overview of your research question(s) What variable(s) are you
-    interested in predicting? What question(s) are you interested in
-    answering? Name your response/outcome variable(s) and briefly
-    describe it/them. Will these questions be best answered with a
-    classification or regression approach? Which predictors do you think
-    will be especially useful? Is the goal of your model descriptive,
-    predictive, inferential, or a combination? Explain.
+``` r
+wine %>% ggplot(aes(x = `fixed acidity`))+ geom_histogram(bins = 80)
+```
 
--   Your proposed project timeline When do you plan on having your data
-    set loaded, beginning your exploratory data analysis, etc? Provide a
-    general timeline for the rest of the quarter.
+![](data-memo_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
--   Any questions or concerns Are there any problems or difficult
-    aspects of the project you anticipate? Any specific questions you
-    have for me/the instructional team?
+``` r
+wine %>% ggplot(aes(x = `volatile acidity`))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = `citric acid`))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = `residual sugar`))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-4.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = chlorides))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-5.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = `free sulfur dioxide`))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-6.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = `total sulfur dioxide`))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-7.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = density))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-8.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = pH))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-9.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = sulphates))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-10.png)<!-- -->
+
+``` r
+wine %>% ggplot(aes(x = alcohol))+ geom_histogram(bins = 80)
+```
+
+![](data-memo_files/figure-gfm/unnamed-chunk-2-11.png)<!-- -->
+
+I think fixed acidity and total sulfur dioxide will be especially useful
+since there is more of a spread of values. The goal of my model is a
+combination of descriptive and predictive because I want to be able to
+explain why certain variables impact quality differently.  
+My Proposed Project Timeline Weeks 1-2: Finding and Uploading Data Set  
+Weeks 3-4: Tidy Data and Exploratory Data Analysis  
+Weeks 5-8: Write descriptive analyses and create/run models  
+Weeks 9-10: Compile and Edit into final draft
