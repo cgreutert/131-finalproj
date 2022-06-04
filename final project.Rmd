@@ -74,8 +74,6 @@ I intend to use a classification model, as opposed to a regression approach.
 
 # Exploratory Data Analysis (EDA)
 
-- A section for exploratory data analysis: This should contain at least 3 to 5 visualizations and/or tables and their interpretation/discussion. At minimum your group should create a univariate visualization of the outcome(s), a bi-variate or multivariate visualization of the relationship(s) between the outcome and select predictors, etc. Part of an EDA involves asking questions about your data and exploring your data to find the answers.
-
 ## Predictor Summary Statistics
 ```{r}
 summary(wine)
@@ -86,10 +84,13 @@ summary(wine)
 wine %>% ggplot(aes(x = quality))+ geom_bar(stat = "count")
 ```
 
+It appears that this dataset only consists of wine with a quality between 3 and 8. This shows we just took an average sample of wine, there are not really outliers. Furthermore, the quality scores appear to follow a normal distribution.
+
 ##Multivariate Analysis
 ```{r}
-wine %>% select(is.numeric) %>% cor() %>% corrplot(type="lower")
+wine %>% select(where(is.numeric)) %>% cor() %>% corrplot(type="lower")
 ```
+It appears the following pairings are highly correlated: fixed acidity/citric acid, volatile acidity/citric acid, fixed acidity/density, fixed acidity/pH, citric acid/pH, free sulfur dioxide/total sulfur dioxide, and density/alcohol.
 
 ## Bivariate Analysis
 
@@ -101,12 +102,15 @@ wine %>%
   ylab("Quality Score") +
   coord_flip()
 ```
+My initial assumption is the higher the alcohol content, the higher the quality score. 
+
 
 ```{r}
 wine %>% 
   ggplot(aes(x = quality, y = fixed_acidity)) +
   geom_boxplot()
 ```
+My initial assumption is that fixed acidity has some outliers when the quality score is 5 or 6, but fixed acidity does not greatly change its quality score.
 
 # Cross Validation
 
@@ -288,7 +292,7 @@ param_gridb <- grid_regular(tree_depth(range = c(1,10)), trees(range = c(2500,10
 tune_boost <- tune_grid(
   boost_wf, 
   resamples = wine_folds, 
-  grid = param_gridb
+  grid = param_gridb 
 )
 
 autoplot(tune_boost)
